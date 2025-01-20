@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine" rel="stylesheet">
+
+    <title>Restaurant Menu</title>
+    <style>
+        @font-face {
+            font-family: 'Bernadette Rough';
+            src: url('path-to-font/BernadetteRough.ttf') format('truetype');
+        }
+        
+        body {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            margin: 0 20px 20px 20PX;
+            padding: 0 30PX 30PX 30PX;
+            background-color: white;
+        }
+        
+        
+        .menu .menu-header {
+            display: flex; /* Use Flexbox for layout */
+            align-items: center; /* Vertically align items */
+            justify-content: center; /* Horizontally center the content */
+            position: relative; /* Allows precise positioning over the image */
+            bottom: -20px; /* Moves the text partially below the image */
+            left: 50%; /* Centers horizontally */
+            transform: translateX(-50%); /* Centers text precisely */
+            text-align: center;
+            padding: 2px 2px 20px 2px; /* Adds space around the text */
+        }
+        
+        .menu .menu-header .logo-img {
+            width: 430px; /* Adjust size for the logo */
+            height: 230px; /* Maintain aspect ratio */
+        }
+        .container {
+            position: relative; /* Ensures the h1 is positioned relative to the image */
+            display: inline-block; /* Keeps the container sized to its content */
+        }
+        
+        .sama-img {
+            width: 230px; /* Adjust size for the image */
+            height: 200px;
+            display: block;
+        }
+        
+        .menu .menu-header h1 {
+            font-family: 'Tangerine';
+            position: absolute; /* Position the text over the image */
+            bottom: 50px; /* Moves the text below the image */
+            left: 50%; /* Centers the text horizontally */
+            transform: translateX(-50%); /* Centers text precisely */
+            font-size: 50px; /* Adjust the size of the text */
+            font-weight: bold;
+            text-transform: uppercase; /* Optional: Make text uppercase */
+            color: #333; /* Text color */
+            margin: 0; /* Remove any default margin */
+            padding: 5px 10px; /* Optional: Add padding around the text */
+            text-align: center;
+            display: flex;
+        }
+        
+        
+
+        .menu-categories-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px; /* Adjust spacing between categories */
+            justify-content: space-between; /* Align categories evenly */
+        }
+
+        
+        .menu-categories {
+            box-sizing: border-box; /* Ensures padding and borders don't affect width calculation */
+            border: 1px solid #010101; /* Optional: Add border to distinguish sections */
+            padding: 16px; /* Optional: Add padding */
+            background-color: #FFD802; /* Optional: Add background color */
+            border-radius: 8px; /* Optional: Add rounded corners */
+            flex: 1 1 calc(100% - 2rem);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    max-width: 500px;
+        }
+        
+      
+        .menu-section {
+            flex: 1 1 calc(50% - 20px); /* Make each category take half the width, minus gap spacing */
+            box-sizing: border-box; /* Ensure padding/margin doesn't affect width calculation */
+        }
+
+        .menu-section h2 {
+            font-family: 'Tangerine';
+            color: #010101;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Ensures vertical alignment */
+            padding: 10px 0;
+            border-bottom: 1px solid #010101;
+        }
+        
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        
+        .menu-item .name {
+            display: flex; /* Enables image and text to align horizontally */
+            align-items: center; /* Align image and text vertically */
+            font-size: 16px;
+            color: #010101;
+        }
+        
+        .menu-item .price {
+            font-size: 16px;
+            color: #010101;
+        }
+        
+        .item-img {
+            width: 50px; /* Adjust width for desired size */
+            height: 50px; /* Consistent height for all images */
+            object-fit: cover; /* Ensures images are cropped to fit the dimensions */
+            border-radius: 5px; /* Optional: rounded corners */
+        }
+
+        .container {
+            position: relative; /* Ensures the h1 is positioned relative to the image */
+            display: inline-block; /* Keeps the container sized to its content */
+            margin-bottom: 40px;
+        }
+        
+        .menu-image {
+            display: flex; /* Use Flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically if needed */
+            margin-top: 20px; /* Add space above the image */
+        }
+        
+        .menu-image img {
+             /* Scale image within its container */
+             display: flex; /* Use Flexbox for centering */
+             justify-content: center; /* Center horizontally */
+             align-items: center; /* Center vertically if needed */
+             margin-top: 20px; 
+        }
+
+        .menu-image-juice {
+            display: flex; /* Use Flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically if needed */
+            margin-top: 20px; /* Add space above the image */
+        }
+        
+        .menu-image-juice img {
+             /* Scale image within its container */
+             display: flex; /* Use Flexbox for centering */
+             justify-content: center; /* Center horizontally */
+             align-items: center; /* Center vertically if needed */
+             margin-top: 20px; 
+             width: 200px;
+            height: 200px;
+
+        }
+        
+
+        @media (max-width: 768px) {
+            .menu-categories {
+                flex: 1 1 100%;
+            }
+        
+            h2 {
+                font-size: 1.25rem;
+            }
+        
+            .menu-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        
+            .name {
+                margin-bottom: 0.5rem;
+            }
+            .menu .menu-header .logo-img {
+                width: 100px;
+                height: 120px;
+                margin-left: -28%;
+            }
+
+            .menu .menu-header h1 {    bottom: 50px;}
+            .menu-header {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem;
+                border-bottom: 1px solid #ddd;
+                transition: padding 0.3s ease; /* Smooth transition for padding on mobile */
+            }
+            
+            .logo-container {
+                flex: 0 0 auto;
+                max-width: 20%; /* Prevents logo from being too wide */
+                text-align: center;
+            }
+            
+            .logo-img {
+                width: 100%;
+                max-width: 80px;
+                height: auto;
+                transition: max-width 0.3s ease; /* Smooth transition for resizing */
+            }
+            
+            /* Centering Title and Icon in the Menu */
+            .menu-title-container {
+                flex: 1;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .menu-title {
+                font-size: 1.75rem; /* Slightly larger font for better readability */
+                color: #333;
+                margin: 0.5rem 0;
+                font-weight: bold;
+                letter-spacing: 1px;
+            }
+            
+            .sama-img {
+                width: 70px;
+                height: auto;
+                margin-bottom: 1rem; /* Increased space between the icon and title */
+                transition: width 0.3s ease; /* Smooth transition for icon resizing */
+            }
+
+            .menu .menu-header h1 {font-size: 18px;}
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <div class="menu-header" style="margin-bottom:5%;">
+            <div class="logo-container">
+                <img src="images/ghyum.png" class="logo-img" alt="Logo Left" />
+            </div>
+            <div class="menu-title-container">
+                <img class="sama-img" src="images/sama-item.png" alt="Menu Icon" />
+                <h1 class="menu-title">MENU</h1>
+            </div>
+            <div class="logo-container">
+                <img src="images/ghyum.png" class="logo-img" alt="Logo Right" />
+            </div>
+        </div>
+        
+        
+        <div class="menu-categories-container">
+        <div class="menu-categories">
+            <div class="menu-section">
+                <h2>Crepe/Waffles</h2>
+                <div class="menu-item">
+                    <span class="name">Nutella</span>
+                    <span class="price">$4.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Banana</span>
+                    <span class="price">$5.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Fruits</span>
+                    <span class="price">$5.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Cream</span>
+                    <span class="price">$5.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Avocado</span>
+                    <span class="price">$5.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Snickers</span>
+                    <span class="price">$5.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Kinder</span>
+                    <span class="price">$5.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Oreo</span>
+                    <span class="price">$5.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Caramelle Nuts</span>
+                    <span class="price">$5.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Ice Cream</span>
+                    <span class="price">$4.50</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Nudles Crepe</span>
+                    <span class="price">$5.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Rolls Crepe</span>
+                    <span class="price">$5.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Crepe Cake</span>
+                    <span class="price">$10.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name"><img src="images/sama-item.png" class="item-img"/> Crepe</span>
+                    <span class="price">$6.00</span>
+                </div>
+            </div>
+            </div>
+            <div class="menu-categories">
+                <div class="menu-section">
+                    <h2>Desserts</h2>
+                    <div class="menu-item">
+                        <span class="name">Tarte</span>
+                        <span class="price">$4.00</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="name">Tiramissue</span>
+                        <span class="price">$4.00</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="name">Cheese Cake</span>
+                        <span class="price">$4.00</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="name">Cream Caramelle</span>
+                        <span class="price">$4.00</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="name">Pudding</span>
+                        <span class="price">$4.00</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="name">Cream Brulle</span>
+                        <span class="price">$4.00</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="name">Megro</span>
+                        <span class="price">$4.00</span>
+                    </div>
+                    <div class="menu-image">
+                        <img src="images/crepe.png" alt="Desserts" />
+                    </div>
+                </div>
+            </div>
+        <div class="menu-categories">
+            <div class="menu-section">
+                <h2>Cocktails</h2>
+                <div class="menu-item">
+                    <span class="name">Fruits Salade</span>
+                    <span class="price">$4.50</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Cocktails Slices</span>
+                    <span class="price">$5.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Cocktail Juice</span>
+                    <span class="price">$4.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Avocado</span>
+                    <span class="price">$4.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Mango</span>
+                    <span class="price">$5.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Strawberry</span>
+                    <span class="price">$4.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Banana</span>
+                    <span class="price">$4.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Kiwi</span>
+                    <span class="price">$4.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Chocolate</span>
+                    <span class="price">$5.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Fitness</span>
+                    <span class="price">$7.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name"><img src="images/sama-item.png" class="item-img"/> +18  Cocktail</span>
+                    <span class="price">$7.00</span>
+                </div>
+                <div class="menu-image-juice">
+                    <img src="images/juice.png" alt="Desserts" />
+                </div>
+            </div>
+        </div>
+        <div class="menu-categories">
+            <div class="menu-section">
+                <h2>Fresh Juice (Seasonal)</h2>
+                <div class="menu-item">
+                    <span class="name">Lemonade</span>
+                    <span class="price">$2.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Orange</span>
+                    <span class="price">$2.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Pomegranate</span>
+                    <span class="price">$2.50</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Carrot</span>
+                    <span class="price">$2.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Apple</span>
+                    <span class="price">$2.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Blackberries</span>
+                    <span class="price">$2.50</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">pineapple</span>
+                    <span class="price">$2.50</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">melon</span>
+                    <span class="price">$2.50</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Mango</span>
+                    <span class="price">$3.50</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Kiwi</span>
+                    <span class="price">$2.50</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">strawberry</span>
+                    <span class="price">$3.50</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Mix Juice</span>
+                    <span class="price">$3.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Bleu Hawai</span>
+                    <span class="price">$4.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Jamaika</span>
+                    <span class="price">$4.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Mohito</span>
+                    <span class="price">$3.50</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name"><img src="images/sama-item.png" class="item-img"/> Juice</span>
+                    <span class="price">$5.00</span>
+                </div>
+            </div>
+        </div>
+        <div class="menu-categories">
+            <div class="menu-section">
+                <h2>Coffee: Hot & Cold</h2>
+                <div class="menu-item">
+                    <span class="name">Espresso</span>
+                    <span class="price">$0.50</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Black Coffee</span>
+                    <span class="price">$1.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Ice Flavored Tea</span>
+                    <span class="price">$1.50</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Spanish Latte</span>
+                    <span class="price">$2.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Latte</span>
+                    <span class="price">$1.50</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Salted Caramelle</span>
+                    <span class="price">$2.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">White Mocca Latte</span>
+                    <span class="price">$2.50</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Cuppuccino</span>
+                    <span class="price">$2.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Hot Chocolate</span>
+                    <span class="price">$2.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name"><img src="images/sama-item.png" class="item-img"/> Coffee</span>
+                    <span class="price">$3.00</span>
+                </div>
+            </div>
+        </div>
+        <div class="menu-categories">
+            <div class="menu-section">
+                <h2>Shakes</h2>
+                <div class="menu-item">
+                    <span class="name">Milk</span>
+                    <span class="price">$3.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Chocolate (Your Choice)</span>
+                    <span class="price">$4.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Fruits (Your Choice)</span>
+                    <span class="price">$5.00</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name">Fitness</span>
+                    <span class="price">$5.50</span>
+                </div>
+                <div class="menu-item">
+                    <span class="name"><img src="images/sama-item.png" class="item-img"/> Shakes</span>
+                    <span class="price">$5.50</span>
+                </div>
+                <div class="menu-image-juice">
+                    <img src="images/coffee.png" alt="Desserts" />
+                </div>
+            </div>
+        </div>
+        <div class="menu-categories">
+            <div class="menu-section">
+                <!-- <h2>Delivery</h2> -->
+                <div class="menu-item">
+                    <span class="name"><span style="font-weight: 600;">Delivery: 71 616 935</span>  </span>
+                    <span class="price">100,000</span>
+                </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
